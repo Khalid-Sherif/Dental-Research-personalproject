@@ -1,0 +1,67 @@
+<!DOCTYPE html> {% load static %}
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dental Research</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'blogsite/css/master.css' %}">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/afd6aa68df.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-custom py-sm-0 navbar-light bg-light" style="height: 70px;">
+        <div class="container mycontent">
+            <a class="navbar-brand align-content-center" href="{% url 'home' %}">
+                <img src="{% static 'images/LogoMakr-1zK5VC.png' %}" type="image" height="50" width="180">
+            </a>
+            <div class="search-box">
+                <button class="btn-search"><i class="fas fa-search" ></i></button>
+                <input type="text" class="input-search" placeholder="Type to Search...">
+            </div>
+            <div id="elements" class="ml-auto">
+                <a class="nav-item nav-link" href="#about"><span class="ng-binding">About Us</span> </a>
+                <!--  -->
+                {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="#user">@{{user.username}}</a>
+                <div class="dropdown">
+                    <button class="btn dropdown" style="position: absolute; top: 11px;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i id="hamburger" class="fas fa-bars fa-lg"></i>
+                    </button>
+                    <ul class="dropdown-menu align-middle" style="left: -130px; top: 60px;" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="nav-item nav-link" href="#newpost">New Post</a></li>
+                        <li><a class="nav-item nav-link" href="#draft">Drafts</a></li>
+                        <li><a class="nav-item nav-link" href="#usersettings">User Settings</a></li>
+                        <li><a class="nav-item nav-link" href="{% url 'accounts:logout' %}">Log out</a></li>
+                    </ul>
+                </div>
+                <!--  -->
+                {% else %}
+                <a class="nav-item nav-link" href="{% url 'accounts:login' %}"><span class="ng-binding">Log in</span></a>
+                <a class="nav-item nav-link" href="#signup"><span class="ng-binding">Sign up</span></a>
+                <!--  -->
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog_posts">
+                    {% block content %} {% endblock %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'blogsite/js/master.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>
