@@ -22,8 +22,13 @@
                 </div>
                 <div class="contact">
                     <form action="{% url 'accounts:login' %}" method="POST">
-                        {% csrf_token %} {% bootstrap_form form %} {% buttons %}
-                        <button class="submit">SIGN IN</button> {% endbuttons %}
+                        {% csrf_token %}
+                        <label for="username"></label>
+                        <input type="text" name="username" placeholder="USERNAME">
+                        <!--  -->
+                        <label for="password"></label>
+                        <input type="password" name="password" placeholder="PASSWORD">
+                        <button class="submit">SIGN IN</button>
                     </form>
                 </div>
             </div>

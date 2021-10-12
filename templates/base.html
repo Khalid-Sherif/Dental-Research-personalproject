@@ -43,7 +43,7 @@
                 <!--  -->
                 {% else %}
                 <a class="nav-item nav-link" href="{% url 'accounts:login' %}"><span class="ng-binding">Log in</span></a>
-                <a class="nav-item nav-link" href="#signup"><span class="ng-binding">Sign up</span></a>
+                <a class="nav-item nav-link" href="{% url 'accounts:signup' %}"><span class="ng-binding">Sign up</span></a>
                 <!--  -->
                 {% endif %}
             </div>
